@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Subject</h1>
+    <div id="div1"></div>
+    <script>
+        const departments = ['Mathematics', 'Science', 'Language Arts', 'Social Studies'];
+        const subjects = [
+            ["Calculus", "Physics", "English", "History"],
+            ["Algebra", "Chemistry", "Literature", "Geography"],
+            ["Geometry", "Biology", "Creative Writing", "Civics"],
+            ["Statistics", "Earth Science", "Poetry", "Economics"],
+            ["Trigonometry", "Astronomy", "Drama", "Political Science"],
+            ["Pre-Calculus", "Environmental Science", "Journalism", "Sociology"],
+            ["Linear Algebra", "Anatomy", "Public Speaking", "Psychology"],
+            ["Differential Equations", "Genetics", "Mythology", "Anthropology"],
+            ["Discrete Math", "Microbiology", "Technical Writing", "World History"],
+            ["Number Theory", "Ecology", "Film Studies", "Cultural Studies"]
+        ];
+
+        // สร้างตารางและเพิ่มข้อมูล ด้วย DOM
+
+        /* 
+        1.สร้างส่วนหัวตาราง 
+        <tr>
+            <th>heading..1</th>
+            <th>heading..2</th>
+            ....
+        </tr>
+        2.สร้างข้อมูลในตาราง แต่ละ row
+        <tr>
+            <td>column..1</td>
+            <td>column..2</td>
+            ....
+        </tr>
+        3.ตกแต่งตารางด้วย CSS
+        */
+
+        let table = document.createElement('table');
+        let headerRow = document.createElement('tr');
+        departments.forEach(function (dept) {
+            let th = document.createElement('th');
+            let txt = document.createTextNode(dept);
+            th.appendChild(txt);
+            headerRow.appendChild(th);
+        });
+
+        table.appendChild(headerRow);
+
+        subjects.forEach(subjectsSet => {
+            let row = document.createElement('tr');
+
+            subjectsSet.forEach(function (subjects) {
+                let td = document.createElement('td');
+                let txt = document.createTextNode(subjects);
+                td.appendChild(txt);
+                row.appendChild(td);
+            });
+            table.appendChild(row);
+        });
+        document.getElementById('div1').appendChild(table);
+
+    </script>
+</body>
+
+</html>
