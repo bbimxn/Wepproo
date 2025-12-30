@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 JS</title>
+    <script>
+        console.log("Lab 3 JS loaded");
+    </script>
+
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        p {
+            font-size: 20px;
+            background-color: lightblue;
+            border-radius: 30px;
+            padding: 10px;
+        }
+
+        img {
+            margin: 5px;
+        }
+
+        .b1 {
+            border: 10px solid pink;
+            border-radius: 20px;
+        }
+
+        .b2 {
+            border: 10px solid rgb(149, 233, 222);
+            border-radius: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- <h1 id="say"></h1>
+    <script>
+        let user = prompt("Hello, What's your name?", "Enter your name.");
+        document.getElementById("say").innerHTML = "Hello " + user;
+    </script> -->
+
+    <h1>Moo Deng's Daily Activities</h1>
+    <!-- <p id="listact"></p> -->
+
+    <p id="disp"></p>
+    <script>
+        let person = {
+            name: "Alan",
+            age: 35,
+            hobby: "painting",
+            salary: 15000
+        };
+        document.getElementById("disp").innerHTML = "My name is " + person.name +
+            ". I am " + person.age + " years old. My hobby is " + person.hobby + " and I earn " +
+            person.salary + " baht per month.";
+    </script>
+
+    <!-- <script>
+        let acts = ["Wakes up for a bath and waits for Mom to eat breakfast.",
+            "Walks around, showing off before heading to the water for a nap.",
+            "Takes a nap in the water.",
+            "Might get up for a stroll or a nap on land.",
+            "Naps on land.",
+            "Naps in the water again.",
+            "Mom gets out of the water for dinner while Moo Deng naps.",
+            "Mom eats grass while Moo Deng waits, occasionally running a bit, followed by a long nap until evening.",
+            "Plays with Mom in the water.",
+            "Drinks milk and playfully disturbs Mom.",
+            "Sleeps soundly for hours."];
+
+        // แสดงผลเป็น list
+        let listHTML = "<ul>";
+        acts.forEach((act) => {       //acts.forEach(function(act){
+            listHTML += "<li>" + act + "</li>";   //ข้อเสียเขียน 3 ท่อน งี้ง่ายกว่า listHTML += `<li>${act}</li>`;
+        });
+
+        listHTML += "</ul>";
+        document.getElementById("listact").innerHTML = listHTML;
+    </script> -->
+
+
+    <img id="image1" width=45% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/md1.png">
+    <img id="image2" width=45% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/md2.png"> <br>
+    <button id="myButton" onclick="changeimg();">Change</button>
+    <script>
+        // ตัวอย่าง function 
+        function changeimg() {
+            let img1 = document.getElementById('image1');
+            let img2 = document.getElementById('image2');
+
+            let temp = img1.src;
+            img1.src = img2.src;
+            img2.src = temp;
+
+            img1.setAttribute("class", "b1");
+            img2.setAttribute("class", "b2");
+        }
+    </script>
+
+
+
+
+    <form id="myForm">
+        <p><label for='FirstName'>ชื่อ:</label>
+            <input type="text" id="FirstName" name="FirstName" />
+        </p>
+        <p><label for='LastName'>นามสกุล:</label>
+            <input type="text" id="LastName" name="LastName" />
+        </p>
+        <p><label for='Address'>ที่อยู่</label>
+            <textarea cols="20" rows="5" id="Address" name="Address"></textarea>
+        </p>
+        <p><label for='Country'>ประเทศ:</label>
+            <select id="Country" name="Country">
+                <option value="00" selected="selected">[เลือกประเทศ]</option>
+                <option value="01">Thailand</option>
+                <option value="02">Vietnam</option>
+                <option value="03">Laos</option>
+                <option value="04">Malaysia</option>
+                <option value="05">Singapore</option>
+                <option value="06">Philippines</option>
+                <option value="07">Myanmar</option>
+                <option value="08">Cambodia</option>
+                <option value="09">Brunei</option>
+                <option value="10">Indonesia</option>
+            </select>
+        </p>
+    </form>
+
+    <button onclick="validateForm()">Validate</button>
+    <script src="validator.js"></script>
+    
+
+</body>
+
+</html>
