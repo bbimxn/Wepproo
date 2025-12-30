@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental Web Programming Lab</title>
+
+</head>
+<body>
+    <h1>สุ่มตัวเลข</h1>
+
+    <div>
+        <img id="image0" width=10% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png">
+        <img id="image1" width=10% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png">
+        <img id="image2" width=10% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png">
+        <img id="image3" width=10% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png">
+        <img id="image4" width=10% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png">
+        <img id="image5" width=10% src="http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png"><br>
+    </div>
+
+    <button onclick="generateRandomNumber()">สร้าง</button>
+
+    <script>
+    function generateRandomNumber() {
+        let randNum = Math.floor(Math.random() * 10);
+        document.getElementById("image0").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum + ".png";
+
+        let randNum1 = Math.floor(Math.random() * 10);
+        document.getElementById("image1").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum1 + ".png";
+
+        let randNum2 = Math.floor(Math.random() * 10);
+        document.getElementById("image2").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum2 + ".png";
+
+        let randNum3 = Math.floor(Math.random() * 10);
+        document.getElementById("image3").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum3 + ".png";
+        let randNum4 = Math.floor(Math.random() * 10);
+        document.getElementById("image4").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum4 + ".png";
+
+        let randNum5 = Math.floor(Math.random() * 10);
+        document.getElementById("image5").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum5 + ".png";
+
+        let randNum6 = Math.floor(Math.random() * 10);
+        document.getElementById("image6").src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/" + randNum6 + ".png";
+
+    }
+    </script>
+
+</body>
+</html>
