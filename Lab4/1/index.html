@@ -1,17 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-left: 30px;
+        }
+
+        table,tr,th, td {
+            border-bottom: 1px solid black;
+            border-collapse: collapse;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+    </style>
 </head>
+
 <body>
-    <h2>ป้อนเลขสูตรคูณ[1-12]</h2>
-    <input>
-    <button onclike="multiple">แสดงผลคูณ</button>
+    <p>ป้อนเลขสูตรคูณ[1-12]:</p>
+    <input type="text" id="factor">
+    <button type="button" onclick="multiple();">แสดงผลคูณ</button>
+    <div id="div1"></div>
 
     <script>
+        const header = ['เลขคูณ', 'ผลลัพธ์'];
+        const times = [' x 1', ' x 2', ' x 3', ' x 4', ' x 5', ' x 6', ' x 7', ' x 8', ' x 9', ' x 10', ' x 11', ' x 12'];
 
+        function multiple() {
+            let factor = document.getElementById('factor').value;
+            let table = document.createElement('table');
+            let headRow = document.createElement('tr');
+
+            header.forEach(function (head) {
+                let th = document.createElement('th');
+                let txt = document.createTextNode(head);
+                th.appendChild(txt);
+                headRow.appendChild(th);
+            });
+
+            table.appendChild(headRow);
+
+            times.forEach(function (timesSet, count) {
+                let row = document.createElement('tr');
+
+                let td = document.createElement('td');
+                let txt = document.createTextNode(factor + timesSet);
+                td.appendChild(txt);
+                row.appendChild(td);
+
+                let td2 = document.createElement('td');
+                let txt2 = document.createTextNode(factor * (count + 1));
+                td2.appendChild(txt2);
+                row.appendChild(td2);
+
+                table.appendChild(row);
+            });
+
+            document.getElementById('div1').appendChild(table);
+        }
     </script>
 </body>
+
 </html>
