@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: 'Kanit';
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            margin-bottom: 20px;
+        }
+
+        label,input{
+            height: 20px;
+            margin: 5px;
+            width: 250px;
+        }
+
+        select{
+            font-family: 'Kanit';
+            margin-top: 7px;
+            height: 20px;
+            width: 150px;
+        }
+
+        button{
+            font-family: 'Kanit';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <label id = "name">ชื่อ:</label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label id = "surname">นามสกุล:</label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label for="country" id="country">ประเทศ:</label>
+            <select id="country">
+                <option id = "select" value="choose">เลือกประเทศ</option>
+                <option id = "thai" value="thailand">ไทย</option>
+                <option id = "vietnam" value="vietnam">เวียดนาม</option>
+                <option id = "laos" value="laos">ลาว</option>
+                <option id = "malaysia" value="malaysia">มาเลเซีย</option>
+                <option id = "singapore" value="singapore">สิงคโปร์</option>
+                <option id = "philippines" value="philippines">ฟิลิปปินส์</option>
+                <option id = "myanmar" value="myanmar">เมียนมาร์</option>
+                <option id = "cambodia" value="cambodia">กัมพูชา</option>
+                <option id = "brunei" value="brunei">บรูไน</option>
+            </select>
+        </div>
+    </div>
+
+    <button id = "button"type="button" onclick="changeLanguage();">เปลี่ยนภาษาอังกฤษ</button>
+
+    <script>
+
+        let isThai = true;
+
+        function changeLanguage(){
+            if (isThai){
+                document.getElementById('name').textContent = "First Name:"
+                document.getElementById('surname').textContent = "LastName:"
+                document.getElementById('country').textContent = "Country:"
+                document.getElementById('button').textContent = "Change to Thai"
+                document.getElementById('select').textContent = "Select a Country"
+                document.getElementById('thai').textContent = "Thailand";
+                document.getElementById('vietnam').textContent = "Vietnam";
+                document.getElementById('laos').textContent = "Laos";
+                document.getElementById('malaysia').textContent = "Malaysia";
+                document.getElementById('singapore').textContent = "Singapore";
+                document.getElementById('philippines').textContent = "Philippines";
+                document.getElementById('myanmar').textContent = "Myanmar";
+                document.getElementById('cambodia').textContent = "Cambodia";
+                document.getElementById('brunei').textContent = "Brunei";
+
+                isThai = false;
+            }else{
+                document.getElementById('name').textContent = "ชื่อ:";
+                document.getElementById('surname').textContent = "นามสกุล:";
+                document.getElementById('country').textContent = "ประเทศ:";
+                document.getElementById('button').textContent = "เปลี่ยนภาษาอังกฤษ"
+
+                document.getElementById('select').textContent = "เลือกประเทศ";
+                document.getElementById('thai').textContent = "ไทย";
+                document.getElementById('vietnam').textContent = "เวียดนาม";
+                document.getElementById('laos').textContent = "ลาว";
+                document.getElementById('malaysia').textContent = "มาเลเซีย";
+                document.getElementById('singapore').textContent = "สิงคโปร์";
+                document.getElementById('philippines').textContent = "ฟิลิปปินส์";
+                document.getElementById('myanmar').textContent = "เมียนมาร์";
+                document.getElementById('cambodia').textContent = "กัมพูชา";
+                document.getElementById('brunei').textContent = "บรูไน";
+
+                isThai = true;
+            }
+
+        }
+        
+
+    </script>
+</body>
+
+</html>
