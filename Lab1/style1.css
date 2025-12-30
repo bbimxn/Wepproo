@@ -1,0 +1,48 @@
+@font-face {
+    font-family: myWebFont;
+    src: url(mywebfont.crdownload);
+}
+
+
+.center {
+    margin: auto;
+    width: 90%;
+}
+
+body {
+    font-size: 24px;
+    font-family: myWebFont;
+}
+
+h1 {
+    color: brown;
+}
+
+img {
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.bgcolor {
+    background-color: green;
+    border-radius: 10px;
+    padding: 10px;
+    color: wheat
+}
+
+td,
+th {
+    border-bottom: black 1px solid;
+    padding: 10px
+}
+
+.card{
+    width: 500px;
+    height: 300px;
+    color:white;
+    background-color: black;
+    align-items: center;
+    justify-items: center;
+}
