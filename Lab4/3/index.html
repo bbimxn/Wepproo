@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: 'Kanit';
+            align-content: center;
+            justify-items: center;
+        }
+
+        .input {
+            display: flex;
+            gap: 10px;
+            height: 30px;
+            margin-bottom: 40px;
+            margin-top: 30px;
+        }
+
+        h1, h2 {
+            margin: 0;
+            padding: 0; 
+        }
+
+        .total{
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        button {
+            color: white;
+            background: rgb(97, 193, 97);
+            border: none;
+            border-radius: 7%;
+        }
+
+        table,th,tr,td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: rgb(91, 185, 179);
+            color: white;
+            font-weight: 400;
+        }
+
+        th:nth-child(1),td:nth-child(1) {
+            width: 150px;
+        }
+
+
+        th:nth-child(2),td:nth-child(2) {
+            width: 200px;
+        }
+
+        th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4) {
+            width: 100px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h1>ตารางรายรับ-จ่าย</h1>
+    <h2>ยอดคงเหลือ</h2>
+
+    <div id="div1">
+        <h1 class = "total" id="balanceText">0</h1>
+    </div>
+
+    <div class=input>
+        <input id="item" type=text placeholder="รายการ">
+        <input id="amount" type=text placeholder="จำนวน">
+
+        <lable for="select"></lable>
+        <select id="type">
+            <option value="income">รายรับ</option>
+            <option value="expens">รายจ่าย</option>
+        </select>
+
+        <label for="birthdate"></label>
+        <input type="date" id="birthdate" name="birthdate">
+        <button type="button" onclick="commit();">เพิ่มรายการ</button>
+    </div>
+
+    <div id="div2"></div>
+
+    <script>
+        const header = ['วันที่', 'รายการ', 'รายรับ', 'รายจ่าย'];
+        let table = document.createElement('table');
+        let headRow = document.createElement('tr');
+        let total = 0;
+
+        header.forEach(function (head) {
+            let th = document.createElement('th');
+            let txt = document.createTextNode(head);
+            th.appendChild(txt);
+            headRow.appendChild(th);
+        });
+
+        table.appendChild(headRow);
+
+        document.getElementById('div2').appendChild(table);
+
+        function commit() {
+            let dataRow = document.createElement('tr');
+
+            let tdDate = document.createElement('td');
+            let birthdate = document.getElementById('birthdate').value;
+            tdDate.appendChild(document.createTextNode(birthdate));
+
+            let tdItem = document.createElement('td');
+            let item = document.getElementById('item').value;
+            tdItem.appendChild(document.createTextNode(item));
+
+            let tdIncome = document.createElement('td');
+            let tdExpense = document.createElement('td');
+
+            let amountValue = document.getElementById('amount').value;
+            let amount = Number(amountValue);
+
+            let type = document.getElementById('type').value;
+
+            if (type == 'income') {
+                tdIncome.appendChild(document.createTextNode(amount));
+                tdExpense.appendChild(document.createTextNode('0'));
+                total += amount;
+            } else {
+                tdIncome.appendChild(document.createTextNode('0'));
+                tdExpense.appendChild(document.createTextNode(amount));
+                total -= amount;
+            }
+
+            dataRow.appendChild(tdDate);
+            dataRow.appendChild(tdItem);
+            dataRow.appendChild(tdIncome);
+            dataRow.appendChild(tdExpense);
+
+            table.appendChild(dataRow);
+
+            document.getElementById('div2').appendChild(table);
+
+            let balanceDisplay = document.getElementById('balanceText');
+            balanceDisplay.textContent = total.toLocaleString();
+        }
+
+    </script>
+
+</body>
+
+</html>
