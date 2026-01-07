@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            box-sizing: border-box;
+            margin: 20px;
+            display: flexbox;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin:0;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px gray;
+            padding: 10px;
+            width: 23%;
+            margin:0px;
+        }
+
+        p{
+            color:gray;
+            line-height: 1.5;
+        }
+
+        .read{
+            color: blue;  
+            text-decoration: underline;
+
+        }
+
+        @media screen and (max-width:700px) {
+
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>I Want It That Way</h1>
+    <p>‘I Want It That Way’ was a play with words. When Max came up with the original idea for the song, it already had
+        the line ‘you are my fire, the one desire.’ We tried a million different variations on the second verse, and
+        finally we had to go back to what was sounding so great, ‘you are my fire, the one desire.’ And then we changed
+        it to ‘am I your fire, your one desire,’ which made absolutely no sense in combination with the chorus – but
+        everybody loved it!</p>
+    <p style="margin-bottom: 70px;">So… do you recognize this man at all? I was hiding in a bathroom stall, so I didn’t
+        see his face.
+        But I heard him. He was singing along to the music at the bar.
+        Do you remember what he was singing?
+        I think it was that song “I Want It That Way.”
+        Number one, could you please sing the opening of “I Want It That Way”?
+    </p>
+    <h2>Really? Okay</h2>
+
+    <div class="container">
+        <div class="card">
+            <h3>'You are my fireee'</h3>
+            <p>No.2 keep it going
+                'The one desireee'
+                No.3!
+                'Believe when I sayyy'
+                Number fourrr!
+                'III want it that way'</p>
+            <p class = "read">Read more-></p>
+        </div>
+        <div class="card">
+            <h3>'Tell my why!?'</h3>
+            <p>'Ain't nothin' but a heartache'
+                'Tellllllll me why!!'
+                'Ain't nothing but a mistake'
+            </p>
+            <p class = "read">Read more-></p>
+        </div>
+        <div class="card">
+            <h3>NOw Number fiveee</h3>
+            <p>'I never wanna hear you sayyy'
+                Woo!
+                everyone 'I want it that wayyy'</p>
+            <p class = "read">Read more-></p>
+        </div>
+        <div class="card">
+            <h3>It WAS Number FIVE!</h3>
+            <p>NO.5 kill my brother.
+                oh, my god I forgot abput that part.
+            </p>
+            <p class = "read">Read more-></p>
+        </div>
+    </div>
+</body>
+
+</html>
