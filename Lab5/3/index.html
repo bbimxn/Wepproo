@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: grid;
+            grid-template-rows: 1fr 200px;
+        }
+
+        .cardContainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+
+        @media screen and (max-width:1000px) {
+            .cardContainer {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media screen and (max-width:700px) {
+            .cardContainer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Cutest Pokemon</h1>
+        <p>Pokémon (short for "Pocket Monsters") is a massive Japanese media franchise centered on fictional creatures
+            with special powers, where humans, called Trainers, catch, train, battle, and trade them in games (like RPGs
+            for Game Boy), anime, a card game, and more, with core themes of collection, strategy, and growth, featuring
+            iconic characters like Pikachu.
+    </div>
+
+    <div class="cardContainer">
+        <div class="card">
+            <img src="https://media.tenor.com/OZwO3v2UPq0AAAAe/pokemon-rowlet.png">
+            <h1>1.Rowlet</h1>
+            <p>Rowlet (#722) is a Grass/Flying-type starter Pokémon from the Alola region, known as the Grass Quill
+                Pokémon, resembling an owl chick with leaves like a bow tie.
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/7b/73/55/7b73553dc6f7376537c2a442d0bacefa.jpg">
+            <h1>2.モクロー (Mokuroh)</h1>
+            <p>モクロー（#722）は、アローラ地方の草 /飛行タイプのスターターポケモンで、蝶ネクタイのような葉を持つフクロウのひなに似た、草羽ポケモンとして知られています。
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/35/0d/ba/350dba7f63fa1717246b482a4db10519.jpg">
+            <h1>3.Brindibou</h1>
+            <p>Brindibou (#722) est un Pokémon de départ de type Plante/Vol de la région d'Alola,
+                connu sous le nom de Pokémon Plume d'Herbe, ressemblant à un poussin hibou avec des feuilles comme
+                un nœud papillon.Brank because i dont know what i want to do here</p>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/09/ef/a9/09efa9c4456f95592c2767b2c50718aa.jpg">
+            <h1>4.BauzT</h1>
+            <p>BauzT (#722) ist ein Starter-Pokémon vom Typ Pflanze/Flug aus der Alola-Region, bekannt als das
+                Grasfeder-Pokémon, das einem Eulenküken mit Blättern wie eine Fliege ähnelt.</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
