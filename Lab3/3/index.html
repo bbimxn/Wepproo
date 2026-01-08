@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental Web Programming Lab.</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        body {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            margin-bottom: 20px;
+        }
+
+        td {
+            border : 1px solid #ddd;
+            padding-left:  5px;
+        }
+
+        th {
+            border : 1px solid #ddd;
+            background-color: rgb(231, 229, 229);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>ระบบตัดเกรด</h1>
+
+    <table id="gradeTable">
+        <thead>
+            <tr>
+                <th>ลำดับ</th>
+                <th>ชื่อ</th>
+                <th>คะแนน</th>
+                <th>เกรด</th>
+            </tr>
+        </thead>
+        <tbody id="studentBody">
+        </tbody>
+    </table>
+
+    <button onclick="calculateGrades()">คำนวณเกรด</button>
+
+</body>
+
+<script>
+    const students = ["สมชาย", "สมหญิง", "สมศรี", "สมปอง", "สมเกียรติ", "สมบัติ", "สมฤดี", "สมจิตร"];
+
+    function randomScore(){
+        const tbody = document.getElementById('studentBody');
+
+        students.forEach((name , index) => {
+            const score = Math.floor(Math.random() * 61) + 40; 
+
+            const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${name}</td>
+                        <td class="score">${score}</td> <td class="grade"></td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+        });
+    }
+
+
+    function calculateGrades(){
+        const rows = document.querySelectorAll('#studentBody tr');
+
+        rows.forEach(row => {
+            const score = parseInt(row.querySelector('.score').innerText);
+            let grade = '';
+
+            if (score >= 80){
+                grade = 'A';
+            }else if (score >= 70){
+                grade = 'B';
+            }else if (score >= 60){
+                grade = 'C';
+            }else if (score >= 50){
+                grade = 'D';
+            }else{
+                grade = 'F';
+            }
+
+            row.querySelector('.grade').innerText = grade;
+            
+        });
+    }
+    randomScore();
+</script>
+
+</html>
