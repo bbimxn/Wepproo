@@ -19,7 +19,7 @@
     <div class="container">
         <img id="displayPic" class="displayPic">
         <h1 id="foodname" class="foodname"></h1>
-        
+
         <div>
             <h2>ส่วนผสม</h2>
             <p id="ingretiant" class="ingretiant"></p>
@@ -88,34 +88,23 @@
         const idFromindex = params.get('id');
         const menu = recipes.find(item => item.id === idFromindex);
 
-        if (menu) {
-            const imgEle = document.getElementById('displayPic');
-            imgEle.src = menu.image;
+        const imgEle = document.getElementById('displayPic');
+        imgEle.src = menu.image;
 
+        const nameEle = document.getElementById('foodname');
+        nameEle.innerText = menu.name;
 
-            const nameEle = document.getElementById('foodname');
-            nameEle.innerText = menu.name;
-
-
-            const ingreEle = document.querySelector('.ingretiant');
-            if (ingreEle) {
-                ingreEle.innerHTML = menu.ingredients.map(item => `• ${item}`).join('<br>');
-            }
-
-
-            const processElement = document.getElementById('process');
-            if (processElement) {
-                processElement.innerHTML = menu.process.map(step => `${step}`).join('<br><br>');
-            }
-
-            document.title = menu.name + " | เมนุอาหารไทย";
-
-        } else {
-            const container = document.querySelector('.container');
-            if (container) {
-                container.innerHTML = "<h1>ไม่พบเมนูที่คุณต้องการ</h1><a href='index.html'>กลับหน้าหลัก</a>";
-            }
+        const ingreEle = document.querySelector('.ingretiant');
+        if (ingreEle) {
+            ingreEle.innerHTML = menu.ingredients.map(item => `• ${item}`).join('<br>');
         }
+
+        const processElement = document.getElementById('process');
+        if (processElement) {
+            processElement.innerHTML = menu.process.map(step => `${step}`).join('<br><br>');
+        }
+
+        document.title = menu.name + " | เมนูอาหารไทย";
 
     </script>
 </body>
