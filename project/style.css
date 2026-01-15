@@ -3,20 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
 
 /* 
-.t1 {
+.font1 {
     font-family: "IBM Plex Sans Thai", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-.t2{
+.font2{
     font-family: "Taviraj", serif;
     font-weight: 400;
     font-style: normal;
 
 }
 
-.t3 {
+.font3 {
     font-family: "Mitr", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -115,7 +115,7 @@ body {
 
 img {
     width: 100%;
-    height: auto;
+    height: 200px;
     object-fit: cover;
     border-radius: 15px;
 }
@@ -131,40 +131,34 @@ h2 {
     background-color: rgb(27, 24, 24);
     color: white;
     margin-top: 70px;
-
     width: 100vw;
     display: block;
     overflow: hidden;
-
 }
 
 .footer-container {
     font-family: "IBM Plex Sans Thai", sans-serif;
     font-weight: 400;
-
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 100px;
-    
-    max-width: 1200px;
+    grid-template-columns: 1fr 2fr; 
+    gap: 50px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 50px 20px;
     box-sizing: border-box;
 }
 
-
-.footer-right {
-    padding-top: 30px;
-    margin-top: 26px;
-}
-
-.footer-middle {
-    margin-top: 17px;
-    margin-left: 10px;
-}
-
 .ref-info {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+}
+
+.ref-info a {
+    word-break: break-all; 
+    white-space: normal; 
+    display: block;
+    max-width: 100%;
 }
 
 .info-item {
@@ -179,10 +173,50 @@ h2 {
     margin-top: 10px;
 }
 
-.footer-allRef {
-    display: none;
+.container {
+    max-width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(12, 12, 12, 0.373);
 }
 
+.displayPic {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.foodname {
+    font-family: "Taviraj", serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #333;
+    
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ff6b6b;
+    display: inline-block;
+}
+
+h2 {
+    font-family: "Mitr", sans-serif;
+    color: #e67e22;
+    margin-top: 30px;
+}
+
+.ingretiant, .process {
+    font-family: "Mitr", sans-serif;
+    line-height: 1.8;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-line;
+}
 
 @media screen and (max-width: 1200px) {
     .card-container {
@@ -192,13 +226,9 @@ h2 {
     }
 
     .footer-container {
-        grid-template-columns: 1fr 1fr;
-        margin: 50px;
-    }
-
-    .footer-right,
-    .footer-middle {
-        display: none;
+        grid-template-columns: 1fr 1.5fr;
+        margin: 0 auto;
+        padding: 50px 5%;
     }
 
     .footer-allRef {
@@ -215,17 +245,18 @@ h2 {
         display: grid;
         grid-template-columns: 1fr;
         gap: 0;
-        padding: 20px 0;
+        padding: 40px 20px;
         width: 100%;
-    }
 
-    .footer-right,
-    .footer-middle {
-        display: none;
+        margin: 40px;
     }
 
     .footer-allRef {
         display: grid;
-        margin-top: 70px;
+        margin-top: 40px;
+    }
+
+    .ref-info {
+        grid-template-columns: 1fr;
     }
 }

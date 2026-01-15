@@ -16,18 +16,107 @@
         </a>
     </div>
 
-    <div class = "container">
-        <img id ="displayPic">
-        <h1 id = "foodname"></h1>
-        <h2>ส่วนผสม</h2>
-        <p class = "ingretiant"></p>
-        <h2>วิธีทำ</h2>
-        <p id = "process"></p>
+    <div class="container">
+        <img id="displayPic" class="displayPic">
+        <h1 id="foodname" class="foodname"></h1>
+        
+        <div>
+            <h2>ส่วนผสม</h2>
+            <p id="ingretiant" class="ingretiant"></p>
+        </div>
+
+        <div>
+            <h2>วิธีทำ</h2>
+            <p id="process" class="process"></p>
+        </div>
+
     </div>
 
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h1 class="header">เมนูอาหารไทย</h1>
+                <div class="info-item">
+                    <img src="icon\fish-solid-full.svg" class="icon">
+                    <p>เว็บไซตืนี้จัดทำขึ้นในรายวิชา FUNDAMENTAL WEB PROGRAMMING (2/2025) ของคณะเทคโนโลยีสารสนเทศ
+                        สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง สำหรับงานโครงงานส่วนบุคคล ครั้งที่ 1
+                        โดยนางสาว ปุญญิศา กันจินะ รหัส 67070102
+                    </p>
+                </div>
 
+                <div class="info-item">
+                    <img src="icon\ghost-solid-full.svg" class="icon">
+                    <p>Email : 67070102@kmitl.ac.th</p>
+                </div>
+            </div>
+
+            <div class="footer-allRef">
+                <h2 style="color: white;">แหล่งอ้างอิง</h2>
+                <div class="ref-info">
+                    <a class="reference"
+                        href="https://cooking.kapook.com/view186553.html">https://cooking.kapook.com/view186553.html</a>
+                    <a class="reference"
+                        href="https://www.wongnai.com/recipes/green-curry">https://www.wongnai.com/recipes/green-curry</a>
+                    <a class="reference"
+                        href="https://www.wongnai.com/recipes/thai-fried-noodles-with-shrimp">https://www.wongnai.com/recipes/thai-fried-noodles-with-shrimp</a>
+                    <a class="reference"
+                        href="https://cooking.kapook.com/view69823.html">https://cooking.kapook.com/view69823.html</a>
+                    <a class="reference"
+                        href="https://www.unileverfoodsolutions.co.th/th/chef-inspiration/simple-tips-for-great-flavour/somtum-green-papaya-salad-recipes.html">https://www.unileverfoodsolutions.co.th/th/chef-inspiration/simple-tips-for-great-flavour/somtum-green-papaya-salad-recipes.html</a>
+                    <a class="reference"
+                        href="https://www.wongnai.com/recipes/hainanese-chicken-rice">https://www.wongnai.com/recipes/hainanese-chicken-rice</a>
+                    <a class="reference"
+                        href="https://www.wongnai.com/recipes/foi-thong">https://www.wongnai.com/recipes/foi-thong</a>
+                    <a class="reference"
+                        href="https://www.wongnai.com/recipes/kanom-chan">https://www.wongnai.com/recipes/kanom-chan</a>
+                    <a class="reference"
+                        href="https://food.trueid.net/detail/raBaYlAVlZo">https://food.trueid.net/detail/raBaYlAVlZo</a>
+                    <a class="reference"
+                        href="https://www.wongnai.com/recipes/ugc/75cec0af760143229830497711942a14">https://www.wongnai.com/recipes/ugc/75cec0af760143229830497711942a14</a>
+                    <a class="reference" href="https://www.wongnai.com/recipes/sweet-sticky-rice-with-coconut-castard"
+                        https://www.wongnai.com/recipes/sweet-sticky-rice-with-coconut-castard</a>
+                        <a class="reference"
+                            href="https://food.trueid.net/detail/boge4M9gAgnj?utm_source=web-trueid&utm_medium=ctw&utm_term=clicklink&utm_campaign=food_0yAvNoLY37Em_relatecontent_food_boge4M9gAgnj_08/07/2021">https://food.trueid.net/detail/boge4M9gAgnj?utm_source=web-trueid&utm_medium=ctw&utm_term=clicklink&utm_campaign=food_0yAvNoLY37Em_relatecontent_food_boge4M9gAgnj_08/07/2021</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="recipesData.js"></script>
     <script>
-        
+        const params = new URLSearchParams(window.location.search);
+        const idFromindex = params.get('id');
+        const menu = recipes.find(item => item.id === idFromindex);
+
+        if (menu) {
+            const imgEle = document.getElementById('displayPic');
+            imgEle.src = menu.image;
+
+
+            const nameEle = document.getElementById('foodname');
+            nameEle.innerText = menu.name;
+
+
+            const ingreEle = document.querySelector('.ingretiant');
+            if (ingreEle) {
+                ingreEle.innerHTML = menu.ingredients.map(item => `• ${item}`).join('<br>');
+            }
+
+
+            const processElement = document.getElementById('process');
+            if (processElement) {
+                processElement.innerHTML = menu.process.map(step => `${step}`).join('<br><br>');
+            }
+
+            document.title = menu.name + " | เมนุอาหารไทย";
+
+        } else {
+            const container = document.querySelector('.container');
+            if (container) {
+                container.innerHTML = "<h1>ไม่พบเมนูที่คุณต้องการ</h1><a href='index.html'>กลับหน้าหลัก</a>";
+            }
+        }
+
     </script>
 </body>
 
