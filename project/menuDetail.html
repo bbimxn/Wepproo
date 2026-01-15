@@ -95,14 +95,11 @@
         nameEle.innerText = menu.name;
 
         const ingreEle = document.querySelector('.ingretiant');
-        if (ingreEle) {
-            ingreEle.innerHTML = menu.ingredients.map(item => `• ${item}`).join('<br>');
-        }
+        ingreEle.innerHTML = menu.ingredients.map(item => `• ${item}`).join('<br>');
 
         const processElement = document.getElementById('process');
-        if (processElement) {
-            processElement.innerHTML = menu.process.map(step => `${step}`).join('<br><br>');
-        }
+        processElement.innerHTML = menu.process.map(step => `${step}`).join('<br><br>');
+
 
         document.title = menu.name + " | เมนูอาหารไทย";
 
