@@ -5,45 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| เมนูอาหารไทย</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="navbar">
+        <img src="icon\shrimp-solid-full.svg" class="Headicon">
+        <a href="index.html" class="header-link">
+            <h1 class="header">เมนูอาหารไทย</h1>
+        </a>
+    </div>
+
+    <div class = "container">
+        <img id ="displayPic">
+        <h1 id = "foodname"></h1>
+        <h2>ส่วนผสม</h2>
+        <p class = "ingretiant"></p>
+        <h2>วิธีทำ</h2>
+        <p id = "process"></p>
+    </div>
+
 
     <script>
-        // 1. คำสั่งดึงค่าจาก URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const foodId = urlParams.get('id'); // ถ้ากดต้มยำมา foodId จะเท่ากับ "tomyum"
-
-        // 2. เตรียมข้อมูล (Object)
-        const allMenu = {
-            "tomyum": {
-                title: "ต้มยำกุ้งน้ำข้น",
-                ingredients: ["กุ้ง 5 ตัว", "ข่า", "ตะไคร้"],
-                method: ["ตั้งหม้อ", "ใส่กุ้ง", "ปรุงรส"]
-            },
-            "padthai": {
-                title: "ผัดไทยกุ้งสด",
-                ingredients: ["เส้นเล็ก", "ไข่ไก่", "ถั่วงอก"],
-                method: ["ผัดเส้น", "ใส่เครื่อง", "เสิร์ฟ"]
-            }
-        };
-
-        // 3. ตรวจสอบว่า id ที่ส่งมามีข้อมูลไหม
-        if (allMenu[foodId]) {
-            const data = allMenu[foodId];
-
-            // เปลี่ยน Title แท็บเว็บ
-            document.title = data.title;
-
-            // เปลี่ยนหัวข้อ H1 ในหน้าจอ (ต้องมีแท็ก <h1 id="food-title"> ใน HTML)
-            document.getElementById('food-title').innerText = data.title;
-
-            // เปลี่ยนข้อมูลอื่นๆ ตามที่คุณต้องการ...
-        } else {
-            // ถ้าไม่มีข้อมูล ให้เปลี่ยนเป็น "ไม่พบเมนู"
-            document.getElementById('food-title').innerText = "ไม่พบเมนูอาหาร";
-        }
-
+        
     </script>
 </body>
 

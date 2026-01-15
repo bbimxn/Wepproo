@@ -31,7 +31,7 @@
 }
 
 body {
-    background-color: rgba(240, 240, 240, 0.434);
+    background-color: rgba(234, 232, 232, 0.434);
 }
 
 .icon {
@@ -56,7 +56,9 @@ body {
     z-index: 1000;
 
     background-color: rgb(255, 255, 255);
-    width: 100%;
+    box-shadow: 0 3px 10px rgba(206, 194, 193, 0.907);
+
+    width: 100vw;
     height: 70px;
     gap: 15px;
     padding-left: 20px;
@@ -98,9 +100,17 @@ body {
 
 .card {
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(12, 12, 12, 0.373);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    padding: 10px;
 }
 
 img {
@@ -124,8 +134,8 @@ h2 {
 
     width: 100vw;
     display: block;
-    overflow: hidden; 
-    
+    overflow: hidden;
+
 }
 
 .footer-container {
@@ -135,7 +145,7 @@ h2 {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 100px;
-
+    
     max-width: 1200px;
     margin: 0 auto;
     padding: 50px 20px;
@@ -169,6 +179,10 @@ h2 {
     margin-top: 10px;
 }
 
+.footer-allRef {
+    display: none;
+}
+
 
 @media screen and (max-width: 1200px) {
     .card-container {
@@ -177,39 +191,41 @@ h2 {
         margin-top: 30px;
     }
 
-    .footer-container{
+    .footer-container {
         grid-template-columns: 1fr 1fr;
         margin: 50px;
     }
 
+    .footer-right,
+    .footer-middle {
+        display: none;
+    }
+
+    .footer-allRef {
+        display: grid;
+    }
 }
 
 @media screen and (max-width: 700px) {
-      .card-container {
+    .card-container {
         grid-template-columns: 1fr;
     }
 
     .footer-container {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 0;                
+        gap: 0;
         padding: 20px 0;
         width: 100%;
     }
 
-    .footer-left, 
-    .footer-middle, 
     .footer-right,
-    .footer-section,
-    .info-block,
-    .ref-block {
-        margin: 0;  
-        padding: 10px 20px;
-        width: 100%;
-        display: block;
+    .footer-middle {
+        display: none;
     }
 
-    .info-item {
-        margin-bottom: 5px;
+    .footer-allRef {
+        display: grid;
+        margin-top: 70px;
     }
 }
