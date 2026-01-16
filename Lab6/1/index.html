@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Position</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody id="employeebody">
+        </tbody>
+    </table>
+
+    <script>
+        function employ(data) {
+            let text="";
+            for (i = 0; i < data.length; i++) {
+                text += "<tr>" + "<td>" + data[i].id + "</td>";
+                text += "<td>" + data[i].FirstName + data.FirstName + "</td>";
+                text += "<td>" + data[i].Gender[0] + "</td>";
+                text += "<td>" + data[i].Position + "</td>";
+                text += "<td>" + data[i].Address + "</td>";
+                text += "</tr>";
+            }
+console.log(text)
+            document.getElementById('employeebody').innerHTML = text;
+        }
+        fetch('employees.json')
+            .then(response => response.json())
+            .then(data => employ(data))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>

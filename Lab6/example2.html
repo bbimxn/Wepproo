@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1"></div>
+
+    <script>
+        function heroes(data) {
+            let text = data.squadName + "<br>";
+            text += " " + data.homeTown + "<br>";
+
+            data.members.forEach(member => { //ดึงค่าจาก array members
+                text += " - " + member.name + " (" + member.age + ")" + "<br>";
+
+                text += "<ul>"; //ทำให้เปนlist อยากปสดงผลยังไงก็ใส่ tag html เข้าไป
+                member.powers.forEach(power => {
+                    text += " <li> " + power + "</li>"; //power ได้เลยไม่ต้อง .
+                });
+                text += "</ul>";
+            });
+
+            document.getElementById("div1").innerHTML = text;
+        }
+
+        fetch('superheroes.json')
+            .then(response => response.json())
+            .then(data => heroes(data)) //ส่งไป function heroes ข้อมูลที่ส่งไปชื่อ data
+            .catch(error => console.log('error', error));
+    </script>
+
+        <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>Total</td>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>
