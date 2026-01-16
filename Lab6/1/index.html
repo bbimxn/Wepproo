@@ -34,15 +34,24 @@
     <script>
         function employ(data) {
             let text="";
-            for (i = 0; i < data.length; i++) {
-                text += "<tr>" + "<td>" + data[i].id + "</td>";
-                text += "<td>" + data[i].FirstName + data.FirstName + "</td>";
-                text += "<td>" + data[i].Gender[0] + "</td>";
-                text += "<td>" + data[i].Position + "</td>";
-                text += "<td>" + data[i].Address + "</td>";
+            // for (i = 0; i < data.length; i++) {
+            //     text += "<tr>" + "<td>" + data[i].id + "</td>";
+            //     text += "<td>" + data[i].FirstName + data.FirstName + "</td>";
+            //     text += "<td>" + data[i].Gender[0] + "</td>";
+            //     text += "<td>" + data[i].Position + "</td>";
+            //     text += "<td>" + data[i].Address + "</td>";
+            //     text += "</tr>";
+            // }
+            data.map(user => {
+                 text += "<tr>" + "<td>" + user.id + "</td>";
+                text += "<td>" + user.FirstName + data.FirstName + "</td>";
+                text += "<td>" + user.Gender[0] + "</td>";
+                text += "<td>" + user.Position + "</td>";
+                text += "<td>" + user.Address + "</td>";
                 text += "</tr>";
-            }
-console.log(text)
+                console.log(user)
+            })
+// console.log(text)
             document.getElementById('employeebody').innerHTML = text;
         }
         fetch('employees.json')
