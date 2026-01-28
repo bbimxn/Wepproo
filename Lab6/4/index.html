@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List Lab 6/4</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: "Kanit", sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            color: white;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .add-btn {
+            background-color: #007bff;
+        }
+
+        .clear-btn {
+            background-color: #007bff;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .del-btn {
+            background-color: #e74c3c;
+        }
+
+        .empty {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>🎬 รายการภาพยนตร์/ซีรีส์โปรด</h2>
+
+        <div class="button-group">
+            <div class="input-box">
+                <input type="text" id="movieTitle" placeholder="ชื่อภาพยนตร์หรือซีรีส์...">
+                <button class="add-btn" onclick="SaveMovie()">+ เพิ่ม</button>
+            </div>
+            <button class="clear-btn" onclick="ClearAll()">🗑 ลบทั้งหมด</button>
+        </div>
+
+        <div id="movie-display"></div>
+    </div>
+
+    <script>
+        function SaveMovie() {
+            let title = document.getElementById("movieTitle").value;
+            if (title.trim() !== "") {
+                let count = localStorage.getItem('movieCount') || 0;
+                count = parseInt(count) + 1;
+
+                localStorage.setItem('movie_' + count, title);
+                localStorage.setItem('movieCount', count);
+
+                document.getElementById("movieTitle").value = "";
+                LoadMovies();
+            }
+        }
+
+        function LoadMovies() {
+            let count = localStorage.getItem('movieCount') || 0;
+            let text = "";
+            let found = false;
+
+            for (let i = 1; i <= count; i++) {
+                let movie = localStorage.getItem('movie_' + i);
+                if (movie) {
+                    found = true;
+                    text += "<div class='item'>";
+                    text += "<span>🎬 " + movie + "</span>";
+                    text += "<button class='del-btn' onclick='DeleteMovie(" + i + ")'>ลบ</button>";
+                    text += "</div>";
+                }
+            }
+
+            if (!found) {
+                text = "<div class='empty'>ยังไม่มีรายการโปรด</div>";
+            }
+
+            document.getElementById('movie-display').innerHTML = text;
+        }
+
+        function DeleteMovie(id) {
+            localStorage.removeItem('movie_' + id);
+            LoadMovies();
+        }
+
+        function ClearAll() {
+            localStorage.clear();
+            LoadMovies();
+        }
+
+        LoadMovies();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="quiz-container"></div>
+
+    <script>
+        function displayQuiz(data) {
+            let text = "";
+
+            data.map((item, index) => {
+                text += "<div class='question-block'>";
+                text += "<p>" + (index + 1) + ". " + item.question + "</p>";
+                text += "<label><input type='radio' name='q" + index + "' value='a'> A. " + item.answers.a + "</label>";
+                text += "<label><input type='radio' name='q" + index + "' value='b'> B. " + item.answers.b + "</label>";
+                text += "<label><input type='radio' name='q" + index + "' value='c'> C. " + item.answers.c + "</label>";
+                text += "</div>";
+            })
+
+            document.getElementById('quiz-container').innerHTML = text;
+        }
+
+        fetch('questionAnswerData.json')
+            .then(response => response.json())
+            .then(data => displayQuiz(data))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>
