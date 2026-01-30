@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        button {
+            background-color: rgb(108, 179, 108);
+            color: white;
+            height: 40px;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        .header{
+            background-color: rgb(49, 51, 61);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .link{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="panda-logo.png" width="500">
+    <div class="header">
+        <div class="link">
+            <a href="/">Home</a>
+            <a href="/cat">Cat</a>
+            <a href="/dog">Dog</a>
+            <a href="/bird">Bird</a>
+        </div>
+        <div style="margin: 5px;">
+            <button href="/about">About</button>
+        </div>
+    </div>
+</body>
+
+</html>
