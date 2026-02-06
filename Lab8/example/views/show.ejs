@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        td,th,table{
+            border-bottom: 1px solid gray;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- สร้างตารางสำหรับแสดงข้อมูล -->
+     <h1>Instructure Data</h1>
+
+    <!-- EJS Syntax -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Dept Name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+
+    <% data.forEach((item)=>{ %> 
+
+        <tr>
+            <td><%= item.ID %> </td>
+            <td><%= item.name %></td>
+            <td><%= item.dept_name %></td>
+            <td><%= item.salary %></td>
+        </tr>
+    
+    <% }); %>
+    </table>
+</body>
+
+</html>
