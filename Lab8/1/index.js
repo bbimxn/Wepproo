@@ -5,104 +5,71 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+const conn = require('./database'); 
 
-// เพิ่มใช้งานไฟล์
-const conn = require('./database');  //ไม่ต้องใส่นามสกุล
-const { name } = require('ejs');
+app.use(express.static('public')); 
+app.set('view engine', 'ejs'); 
 
-
-
-// static resourse & template engine
-app.use(express.static('public')); //กำหนดfloder
-// Set EJS as templating engine 
-app.set('view engine', 'ejs'); //กำหนดให้ใช้ template engin + กำหนดให้เปน view engin + ใช้โฟลเดอร์ views
-// For parsing form data
 app.use(express.urlencoded({ extended: true }));
 
-
-
 app.get('/', (req, res) => {
-    res.send(`
-        <a href="/create">Create table</a><br>
-        <a href="/insert">Insert data to table</a><br>
-        <a href="/showdata">show data </a><br>
-        <a href="/form">form</a><br>
-        `);
-});
-
-
-
-// routing 
-app.get('/create', (req, res) => {
-    // Create table in MySQL database
-    const sql = `CREATE TABLE IF NOT EXISTS instructor (
-        ID varchar(5) NOT NULL,
-        name varchar(255) NOT NULL,
-        dept_name varchar(255) NOT NULL,
-        salary float,
-        PRIMARY KEY (ID)
-    );`;
-    //ข้อมูลที่ผู้ใช้งานประกอบด้วย username password email firstname lastname age address และ phone
-
-    conn.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("Table created or already exists");
-        res.send("Table created or already exists");
-    });
-    // then, Insert data into the table
-
-});
-
-
-
-app.get('/insert', (req, res) => {
-    const sql = `INSERT INTO instructor (ID, name, dept_name, salary)
-    VALUES 
-    ('10101', 'Srinivasan', 'Comp. Sci.', 65000),
-    ('12121', 'Wu', 'Finance', 90000),
-    ('15151', 'Mozart', 'Music', 40000),
-    ('22222', 'Einstein', 'Physics', 95000),
-    ('32343', 'El Said', 'History', 60000);`;
-
-    conn.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("Data inserted successfully");
-        res.send("Data inserted successfully");
-    });
-    // then, Insert data into the table
-});
-
-
-app.get('/showdata', (req, res) => {
-    const sql = 'SELECT * FROM instructor;';
+    const sql = 'SELECT * FROM Users;'; 
     conn.query(sql, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-        res.render('show', { data: result });
+        if (err) {
+            return res.send("No data found. <br><a href='/create'>Click here to create Table and Sample Data</a>");
+        }
+        res.render('show', { data: result }); 
     });
 });
 
+app.get('/create', (req, res) => {
+    const createTable = `CREATE TABLE IF NOT EXISTS Users (
+        username varchar(50) NOT NULL,
+        password varchar(255) NOT NULL,
+        email varchar(100) NOT NULL,
+        firstname varchar(100),
+        lastname varchar(100),
+        age int,
+        address varchar(255),
+        phone varchar(20),
+        PRIMARY KEY (username)
+    );`;
 
+    conn.query(createTable, (err) => {
+        if (err) return res.status(500).send(err.message);
+        
+        const seedSql = `INSERT IGNORE INTO Users VALUES ?`;
+        const values = [
+            ['somchai88', 'p@ssw0rd123', 'somchai.s@email.com', 'Somchai', 'Saetang', 28, '123 BKK', '081-234-5678'],
+            ['jane_doe', 'jane_secure!', 'jane.doe@provider.net', 'Jane', 'Doe', 32, '456 CM', '089-876-5432'],
+            ['baimon_42', 'discovery2026', 'baimon.dev@piscine.com', 'Baimon', 'Coding', 21, '42 Discovery Lane', '02-111-2222']
+        ];
 
-app.get('/form', function (req, res) {
+        conn.query(seedSql, [values], (err) => {
+            if (err) return res.status(500).send(err.message);
+            console.log("Table and Sample Data created!");
+            res.redirect('/'); // go back to home to see the table
+        });
+    });
+});
+
+app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, "/public/form.html"));
 });
-app.get('/formget', (req, res) => {
-    // read data from query string 
 
-    const {id,name,deptname,salary} = req.query;
-
-    const insertSql = "INSERT INTO instructor (ID, name,dept_name,salary) VALUES (?,?,?,?)";
+app.post('/register', (req, res) => {
+    // get data from the form
+    const { username, password, email, firstname, lastname, age, address, phone } = req.body;
     
-    conn.query(insertSql,[id,name,deptname,salary], (err, result) =>{
-        if (err) throw err;
-        console.log("Data inserted");
-        res.send("Data inserted");
+    const sql = "INSERT INTO Users VALUES (?,?,?,?,?,?,?,?)";
+    
+    conn.query(sql, [username, password, email, firstname, lastname, age, address, phone], (err) => {
+        if (err) return res.status(500).send(err.message);
+        console.log("New user registered!");
+        res.redirect('/'); // go back to home to see new data
     });
 });
 
-
-
 app.listen(port, () => {
-    console.log(`listening to port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });

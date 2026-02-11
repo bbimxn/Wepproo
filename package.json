@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.16.3"
+  },
+  "name": "wepproo",
+  "version": "1.0.0",
+  "description": "* **Subject:** 06066302 Fundamental Web Programming\r * **Term:** Year 2, Semester 2 (2/2025)\r * **Status:** In Progress ⏳ (กำลังเรียนอยู่จ้า)\r * **Language:** HTML5, CSS3, JavaScript\r * **Last Update:** 2025 🗓️",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbimxn/Wepproo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bbimxn/Wepproo/issues"
+  },
+  "homepage": "https://github.com/bbimxn/Wepproo#readme"
+}
