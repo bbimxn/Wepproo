@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="/formget" method="GET">
+        <h2>Register</h2>
+        
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>Email:</label>
+        <input type="text" name="email">
+
+        <label>Firstname:</label>
+        <input type="text" name="firstname">
+
+        <label>Lastname:</label>
+        <input type="text" name="lastname">
+
+        <label>Age:</label>
+        <input type="text" name="age">
+
+        <label>Address:</label>
+        <textarea name="address" rows="3"></textarea>
+
+        <label>Phone:</label>
+        <input type="text" name="phone">
+
+        <input type="submit" value="Register" style="background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; width: 100%;">
+    </form>
+
+</body>
+</html>

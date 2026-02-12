@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Music Albums Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h2 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .card-info p {
+            margin: 5px 0;
+            color: #444;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The most popular albums</h1>
+    <div class="grid-container">
+        <% albums.forEach(function(item) { %>
+            <div class="card">
+                <img src="<%= item.album_cover %>" alt="Cover Art">
+                <div class="card-info">
+                    <h2>
+                        <%= item.song %>
+                    </h2>
+                    <p>Album: <%= item.album %> (<%= item.year %>)</p>
+                    <p>Artist: <%= item.artist %>
+                    </p>
+                    <p>Genre: <%= item.genre %>
+                    </p>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+</body>
+
+</html>
