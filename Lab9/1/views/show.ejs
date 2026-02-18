@@ -1,0 +1,38 @@
+<!-- home.ejs -->
+<!doctype html>
+<html lang="en">
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 fw-bold">User List</h1>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="id">ID</th>
+                    <th class="fname">First Name</th>
+                    <th class="lname">Last Name</th>
+                    <th class="email">Email</th>
+                    <th class="action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((item)=> { %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= item.first_name %></td>
+                        <td><%= item.last_name %></td>
+                        <td><%= item.email %></td>
+                        <td>
+                            <a href="/detail/<%= item.id %>">
+                                <button class="btn-black">Detail</button>
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

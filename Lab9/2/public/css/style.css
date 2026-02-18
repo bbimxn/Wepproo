@@ -1,0 +1,13 @@
+
+.form-check-input {
+    border: 1px solid #000 !important;
+    cursor: pointer;
+}
+
+
+
+.form-check-label {
+    font-weight: 500;
+    cursor: pointer;
+    padding-left: 5px;
+}

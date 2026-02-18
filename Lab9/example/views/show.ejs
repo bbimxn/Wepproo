@@ -1,0 +1,35 @@
+<!-- home.ejs -->
+<!doctype html>
+<html lang="en">
+
+<%- include("head") %>
+
+    <body>
+        <div class="container">
+            <!-- heaher -->
+            <%- include("header") %>
+
+            <!-- Content -->
+            <table>
+                <% data.forEach((item)=>{ %>
+                <tr>
+                    <td><%=item.EmployeeId%></td>
+                    <td><%=item.FirstName%></td>
+                    <td><%=item.LastName%></td>
+                    <td><%=item.Title%></td>
+                    <td><%=item.Phone%></td>
+                    <td><%=item.Email%></td>
+                    <td><a href = "/delete/<%=item.EmployeeId%>">Delete</a></td>
+
+                <% }); %>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- footer -->
+        <%- include("footer") %>
+
+    </body>
+
+</html>

@@ -1,0 +1,23 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+button.btn-black {
+    background-color: black;
+    color: white;
+    border: none;
+    width: auto;
+    border-radius: 4px;
+    padding: 3px 10px;
+}
+
+.table-bordered, 
+.table-bordered td, 
+.table-bordered th {
+    border: 1px solid black !important; 
+}
