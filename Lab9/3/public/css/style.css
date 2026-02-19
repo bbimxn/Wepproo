@@ -7,8 +7,27 @@ table {
     border-collapse: collapse;
 }
 
-.table-bordered, 
-.table-bordered td, 
+.table-bordered,
+.table-bordered td,
 .table-bordered th {
-    border: 1px solid gray !important; 
+    border: 1px solid gray !important;
 }
+
+button.btn-blue {
+    background-color: rgb(61, 53, 168);
+    color: white;
+    border: none;
+    width: auto;
+    border-radius: 4px;
+    padding: 3px 10px;
+}
+
+button.btn-green{
+    background-color: rgb(25, 141, 25);
+    color: white;
+    border: none;
+    width: auto;
+    border-radius: 4px;
+    padding: 3px 10px;
+}
+

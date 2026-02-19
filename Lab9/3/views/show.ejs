@@ -3,23 +3,15 @@
 <html lang="en">
 
 <body>
-    <h1 class="mb-4 fw-bold">ระบบติดตามคำสั่งซื้อ</h1>
-    <form action="/formget" method="GET">
-        <input type="text" name="customer_name" placeholder="ชื่อลูกค้า">
-        <input type="text" name="product_name" placeholder="รายการสินค้า">
-        <input type="text" name="tel" placeholder="เบอร์โทร">
-        <button type="submit" class="btn-green">Submit</button>
-    </form>
     <div class="container mt-5">
         <h2 class="mb-4 fw-bold">รายการคำสั่งซื้อ</h2>
-
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>ลูกค้า</th>
                     <th>สินค้า</th>
-                    <th>สถานะ</th>
+                    <th>สถานะปัจจุบัน</th>
                     <th>เปลี่ยนสถานะ</th>
                 </tr>
             </thead>
@@ -29,15 +21,20 @@
                         <td><%= item.ID %></td> 
                         <td><%= item.customer_name %></td>
                         <td><%= item.product_name %></td>
-                            <td><select name="status">
-                            <option value="รอดำเนินการ">รอดำเนินการ</option>
-                            <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
-                            <option value="จัดส่งแล้ว">จัดส่งแล้ว</option>
-                            <option value="ยกเลิก">ยกเลิก</option>
-                        </select></td>
-                        <td><button type="submit" class="btn-green">Submit</button></td>
-                        <% }); %>
+                        <td><%= item.status %></td> <td>
+                            <form action="/update-status" method="GET" style="display:flex; gap:10px;">
+                                <input type="hidden" name="id" value="<%= item.ID %>">
+                                <select name="status">
+                                    <option value="รอดำเนินการ" <%= item.status === 'รอดำเนินการ' ? 'selected' : '' %>>รอดำเนินการ</option>
+                                    <option value="กำลังจัดส่ง" <%= item.status === 'กำลังจัดส่ง' ? 'selected' : '' %>>กำลังจัดส่ง</option>
+                                    <option value="จัดส่งแล้ว" <%= item.status === 'จัดส่งแล้ว' ? 'selected' : '' %>>จัดส่งแล้ว</option>
+                                    <option value="ยกเลิก" <%= item.status === 'ยกเลิก' ? 'selected' : '' %>>ยกเลิก</option>
+                                </select>
+                                <button type="submit" class="btn-blue">อัปเดต</button>
+                            </form>
+                        </td>
                     </tr>
+                <% }); %>
             </tbody>
         </table>
     </div>
