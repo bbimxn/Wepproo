@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .emp-img {
+            width: 50px;
+            height: auto;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <% data.forEach((item)=>{ %>
+        <div>
+    <img src="http://webdev.it.kmitl.ac.th:4000/emp-images/<%= item.EmployeeID %>.png">
+    <%=item.FirstName%>
+    <%=item.LastName%>
+    <%=item.Model%>
+</div>
+    <% }); %>
+</body>
+
+</html>
