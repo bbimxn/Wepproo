@@ -1,0 +1,39 @@
+const sql = `CREATE TABLE products (
+    product_id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    price DECIMAL(10, 2),
+    quantity INTEGER,
+    image_url VARCHAR(255)
+);`;
+
+db.run(sql, (err) => {
+    if (err) {
+        return console.error('Error creating table:', err.message);
+    }
+    console.log('Table created successful');
+});
+
+app.get('/insert-products', (req, res) => {
+    const sql = `INSERT INTO products (product_id, name, description, price, quantity, image_url) VALUES 
+    (1, 'Fried Rice with Shrimp', 'Delicious fried rice with shrimp', 150, 20, 'http://webdev.it.kmitl.ac.th/hw11/images/fried_rice.jpg'),
+    (2, 'Fresh Orange Juice', 'Freshly squeezed orange juice', 60, 30, 'http://webdev.it.kmitl.ac.th/hw11/images/orange_juice.jpg'),
+    (3, 'Chocolate Cake', 'Smooth and rich chocolate cake', 80, 15, 'http://webdev.it.kmitl.ac.th/hw11/images/chocolate_cake.jpg'),
+    (4, 'Spaghetti Carbonara', 'Rich and creamy spaghetti carbonara', 120, 25, 'http://webdev.it.kmitl.ac.th/hw11/images/spaghetti_carbonara.jpg'),
+    (5, 'Sausage Bread', 'Bread stuffed with quality sausages', 45, 50, 'http://webdev.it.kmitl.ac.th/hw11/images/sausage_bread.jpg'),
+    (6, 'Vegetable Salad', 'Fresh vegetable salad with dressing', 75, 35, 'http://webdev.it.kmitl.ac.th/hw11/images/vegetable_salad.jpg'),
+    (7, 'Pizza', 'Thin crust pizza with a variety of toppings', 250, 10, 'http://webdev.it.kmitl.ac.th/hw11/images/pizza.jpg'),
+    (8, 'Hainanese Chicken Rice', 'Tender chicken served with aromatic rice', 90, 40, 'http://webdev.it.kmitl.ac.th/hw11/images/hainanese_chicken_rice.jpg'),
+    (9, 'Crispy Pork Basil', 'Stir-fried crispy pork with basil', 100, 18, 'http://webdev.it.kmitl.ac.th/hw11/images/crispy_pork_basil.jpg'),
+    (10, 'Burger', 'Juicy pork and cheese burger', 150, 30, 'http://webdev.it.kmitl.ac.th/hw11/images/burger.jpg'),
+    (11, 'Fish Congee', 'Rice porridge with fresh fish', 95, 22, 'http://webdev.it.kmitl.ac.th/hw11/images/fish_congee.jpg'),
+    (12, 'Chocolate Ice Cream', 'Rich and creamy chocolate ice cream', 55, 60, 'http://webdev.it.kmitl.ac.th/hw11/images/chocolate_ice_cream.jpg')`;
+
+    db.run(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Error inserting data");
+        }
+        res.send("Sample data inserted successfully");
+    }); 
+});
