@@ -7,7 +7,7 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 
 // Connect to SQLite database
-let db = new sqlite3.Database('restaurant.db', (err) => {
+let db = new sqlite3.Database('books.db', (err) => {
     if (err) {
         return console.error(err.message);
     }
@@ -23,33 +23,17 @@ app.set('view engine', 'ejs');
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-//ดึงข้อมูลจาก resource ที่กำหนดมา ใช้ในหน้า restaurant
 app.get("/", (req, res) => {
-        const endpoint = 'http://webdev.it.kmitl.ac.th:4000/restaurant';
+    const endpoint = 'http://webdev.it.kmitl.ac.th:4000/books';
     fetch(endpoint)
         .then(response => response.json())
         .then(data => {
             console.log(data); 
-            res.render('showRestaurant', { data: data });
+            res.render('store', { data: data });
         })
         .catch(error => {
             console.log(error);
             res.status(500).send("Error fetching data");
-        });
-});
-
-app.get("/detail/:id", (req, res) => {
-    const foodId = req.params.id;
-    const endpoint = `http://webdev.it.kmitl.ac.th:4000/detail/${foodId}`;
-
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(food => {
-            res.render('detail', { food: food });
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(500).send("Error fetching detail");
         });
 });
 
