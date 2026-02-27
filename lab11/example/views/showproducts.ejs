@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Shop - Products</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .btn-add {
+            background-color: #3c48f8;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display:flexbox;
+            background-color: #333;
+            height: 50px;
+            
+        }
+
+        .btn-product,.btn-cart {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class = "navbar">
+        <a href = "" class = "btn-product">Products</a>
+        <a href = "/cart" class = "btn-cart">cart</a>
+    </div>
+
+
+    <div class="product-grid">
+        <% data.forEach((item)=> { %>
+            <div class="card">
+                <img src="http://webdev.it.kmitl.ac.th/phone-images/<%= item.pimage %>" alt="<%= item.name %>">
+                <h3>
+                    <%= item.name %>
+                </h3>
+                <div class="specs">
+                    Storage: <%= item.storage %> | Camera: <%= item.camera %>
+                </div>
+                <div class="price">$<%= item.price%>
+                </div>
+
+                <a href="/add-to-cart/<%= item.id %>" class="btn-add">Add to Cart</a>
+            </div>
+            <% }); %>
+    </div>
+
+</body>
+
+</html>

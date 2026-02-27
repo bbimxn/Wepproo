@@ -1,0 +1,61 @@
+// Import required modules
+const express = require('express');
+const cookieParser = require('cookie-parser');
+
+const app = express();
+const PORT = 3000;
+
+//การใช้ cookie
+app.use(cookieParser());
+
+app.get('/', function (req, res) { //ประกาศ+setค่าต่างๆของcookie
+    res.send(`Welcome! <br>
+        <ul>
+            <li><a href="/set-cookie">Set Cookie</a></li>
+            <li><a href="/get-cookie">Get Cookie</a></li>
+            <li><a href="/clear-cookie">Clear Cookie</a></li>
+        </ul>
+        `);
+});
+
+// Route to set a cookie กำหนดข้อมูล
+app.get('/set-cookie', (req, res) => {
+    try {
+        // Basic cookie  ชื่อ+key ตามด้วยค่าของข้อมูล
+        res.cookie('username', 'webdev-admin', {
+            maxAge: 1000 * 60 * 60,  //อายุขัย 1000 = 1วินาที *60 = 1นาที *60 = 1 hrs
+            httpOnly: true, 
+            secure: false          
+        });   
+
+        res.send('Cookies have been set!');
+    } catch (err) {
+        console.error('Error setting cookie:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Route to read cookies การอ่านกลับมาไม่ต้องใช้ function ใช้ตัวแปรเรียกมาได้เลย
+app.get('/get-cookie', (req, res) => {
+    try { 
+        res.send('Hello ' + req.cookies.username );
+    } catch (err) {
+        console.error('Error reading cookies:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.get('/clear-cookie', (req, res) => { //การหมดอายุมี2แบบ 1หมดตามอายุ 2เคลียร์เอง
+    
+    res.clearCookie('username', { //ตามด้วยชื่อ cookie ที่เราตั้งไว้
+        httpOnly: true,
+        secure: false,
+        sameSite: 'Strict'
+    });
+    res.send('Cookie has been cleared.');
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});

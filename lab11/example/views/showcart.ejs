@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>product</th>
+                <th>amount</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+               let totalAmount = 0; 
+               let totalPrice = 0; 
+            %>
+
+            <% data.forEach((item) => { 
+                totalAmount += Number(item.amount || 1); 
+                totalPrice += Number(item.price);
+            %>
+            <tr>
+                <td><%= item.id %></td>
+                <td><%= item.name %></td>
+                <td><%= item.amount || 1 %></td>
+                <td><%= item.price %></td>
+            </tr>
+            <% }); %>
+
+            <tr class="total-row">
+                <td colspan="2" style="text-align: right;">Total:</td>
+                <td><%= totalAmount %></td>
+                <td><%= totalPrice.toLocaleString() %></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <button><a href="/products" style="text-decoration: none; color: black;">Product</a></button>
+    <button><a href="/clear-cart" style="text-decoration: none; color: black;">Clear cart</a></button>
+</body>
+
+</html>
