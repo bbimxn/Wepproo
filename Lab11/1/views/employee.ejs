@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Information</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: white;
+            border: 1px solid black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Employee Information</h1>
+    <form action="/save" method="POST">
+        <div class="form-group">
+            <label>Employee ID:</label>
+            <input type="text" name="id" value="<%= emp.id || '' %>">
+        </div>
+        <div class="form-group">
+            <label>Firstname:</label>
+            <input type="text" name="firstname" value="<%= emp.firstname || '' %>">
+        </div>
+        <div class="form-group">
+            <label>Lastname:</label>
+            <input type="text" name="lastname" value="<%= emp.lastname || '' %>">
+        </div>
+        <div class="form-group">
+            <label>Address:</label>
+            <textarea name="address" rows="3"><%= emp.address || '' %></textarea>
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" name="email" value="<%= emp.email || '' %>">
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="text" name="phone" value="<%= emp.phone || '' %>">
+        </div>
+
+        <div class="button-group">
+            <button type="submit">Save Data</button>
+            <button type="button" onclick="location.href='/show'">Show Data</button>
+            <button type="button" onclick="location.href='/clear'">Clear Data</button>
+        </div>
+    </form>
+
+</body>
+
+</html>
