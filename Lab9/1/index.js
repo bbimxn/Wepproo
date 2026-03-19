@@ -9,7 +9,7 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 
 // Connect to SQLite database
-let db = new sqlite3.Database('userdata.db', (err) => {    //ใส่ชื่อไฟล์ database + ถ้าใส่ผิดไปก็จะสร้างฐานข้อมูลเปล่าในชื่อนั้นให้
+let db = new sqlite3.Database('5.db', (err) => {    //ใส่ชื่อไฟล์ database + ถ้าใส่ผิดไปก็จะสร้างฐานข้อมูลเปล่าในชื่อนั้นให้
     if (err) {
         return console.error(err.message);
     }

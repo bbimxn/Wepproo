@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h1 class="mb-4">User List</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table">
+            <tr>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% data.forEach(item=> { %>
+                <tr>
+                    <td>
+                        <%= item.ID %>
+                    </td>
+                    <td>
+                        <%= item.FirstName %>
+                    </td>
+                    <td>
+                        <%= item.LastName %>
+                    </td>
+                    <td>
+                        <%= item.Username %>
+                    </td>
+                    <td>
+                        <%= item.Email %>
+                    </td>
+                    <td><button  href="/detail/<%= item.ID %>" type="button" class="btn btn-primary">Edit</button>
+                        <button type="button" class="delete">Delete</button>
+                    </td>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>
